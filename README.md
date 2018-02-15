@@ -1,7 +1,12 @@
 whoami
 ======
 
+Simple HTTP docker service that prints it's container ID. In addition, it can show version and environments as response headers.
+
 # Docker Compose
+
+* Build
+* Run
 
 ```
 $ GIT_SHA=$(git rev-parse --short HEAD) docker-compose build && docker-compose up
@@ -17,7 +22,6 @@ Step 3/12 : WORKDIR /app
 Step 4/12 : RUN go build -o http
  ---> Using cache
  ---> c9c7d8cb8c3a
-
 Step 5/12 : FROM alpine:3.6
  ---> 77144d8c6bdc
 Step 6/12 : WORKDIR /app
@@ -51,7 +55,7 @@ Attaching to whoami_whoami_1
 whoami_1  | Listening on :8000
 ```
 
-Calling the server with the port number exposed by `docker-compose`.
+* Just call the service on the published port; review and change it in `docker-compose`.
 
 ```
 $ curl -i localhost:8000
@@ -67,29 +71,15 @@ Content-Type: text/plain; charset=utf-8
 I'm 3b018e0f4239
 ```
 
-Just to confirm that the version is being retrieved from the local container file.
+* Just to confirm that the version is being retrieved from the local container file.
 
 ```
-$ curl -i localhost:8000
-HTTP/1.1 200 OK
-X-Application-Env: prod
-X-Application-Label: master
-X-Application-Port: 8000
-X-Application-Version: de4f95e
-Date: Thu, 15 Feb 2018 19:07:37 GMT
-Content-Length: 17
-Content-Type: text/plain; charset=utf-8
-
-I'm 3b018e0f4239
-
-~/dev/github/public/marcellodesales/whoami on  master ⌚ 11:07:16
 $ docker exec -ti 3b018e0f4239 cat /app/version
 de4f95e
 ```
 
 # Docker Engine
 
-Simple HTTP docker service that prints it's container ID
 
 ```
 $ docker run -d -p 8000:8000 --name whoami -t marcellodesales/whoami
