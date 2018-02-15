@@ -43,7 +43,8 @@ func main() {
     }
 
     hostname, _ := os.Hostname()
-    fmt.Fprintf(os.Stdout, "WhoAmI Server version=%s label=%s env=%s\n", version, label, env)
+    signature := fmt.Sprintf("version=%v label=%v env=%v", version, label, env)
+    fmt.Fprintf(os.Stdout, "WhoAmI Server %s", signature)
     fmt.Fprintf(os.Stdout, "Listening on %s:%s\n\n", hostname, port)
 
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -65,7 +66,7 @@ func main() {
         allHeaders := strings.Join(rHeaders, ", ")
 
         // Log the server-side
-        fmt.Fprintf(os.Stdout, "This is server %s:%s serving request %s\n", hostname, port, allHeaders)
+        fmt.Fprintf(os.Stdout, "This is server %s:%s, %s, serving request %s\n", hostname, port, signature, allHeaders)
         fmt.Fprintf(w, "I'm %s serving request %s \n", hostname, allHeaders)
     })
 
