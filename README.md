@@ -5,8 +5,7 @@ Simple HTTP docker service that prints it's container ID. In addition, it can sh
 
 # Docker Compose
 
-* Build
-* Run
+* Build and Run: `GIT_SHA=$(git rev-parse --short HEAD) docker-compose build && docker-compose up`
 
 ```
 $ GIT_SHA=$(git rev-parse --short HEAD) docker-compose build && docker-compose up
