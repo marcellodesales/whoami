@@ -6,7 +6,8 @@ services:
     build:
       context: .
       args:
-        GIT_SHA: ${GIT_SHA:-master}
+        VERSION: ${GIT_SHA:-master}
+        LABEL: ${GIT_LABEL:-master}
     ports:
       - 8000:8000/tcp
     environment:
