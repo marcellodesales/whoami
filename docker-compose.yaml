@@ -1,0 +1,10 @@
+version: "2.2"
+
+services:
+  whoami:
+    build: .
+    image: marcellodesales/whoami
+    ports:
+      - 8000/tcp
+    environment:
+      ENV: prod
