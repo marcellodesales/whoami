@@ -8,6 +8,9 @@ WORKDIR /app
 ENV PORT 8000
 EXPOSE 8000
 COPY --from=binary /app/http /app
-ARG GIT_SHA
-RUN echo $GIT_SHA > /app/version
+ARG VERSION
+RUN echo $VERSION > /app/version
+ARG LABEL
+RUN echo $LABEL > /app/label
+
 CMD ["/app/http"]
