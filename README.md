@@ -59,20 +59,32 @@ HTTP/1.1 200 OK
 X-Application-Env: prod
 X-Application-Label: master
 X-Application-Port: 8000
-X-Application-Version: df62639
-Date: Thu, 15 Feb 2018 19:05:12 GMT
+X-Application-Version: de4f95e
+Date: Thu, 15 Feb 2018 19:07:37 GMT
 Content-Length: 17
 Content-Type: text/plain; charset=utf-8
 
-I'm 03e98b84f714
+I'm 3b018e0f4239
 ```
 
 Just to confirm that the version is being retrieved from the local container file.
 
 ```
-~/dev/github/public/marcellodesales/whoami on  master! ⌚ 11:04:50
-$ docker exec -ti 03e98b84f714 cat /app/version
-df62639
+$ curl -i localhost:8000
+HTTP/1.1 200 OK
+X-Application-Env: prod
+X-Application-Label: master
+X-Application-Port: 8000
+X-Application-Version: de4f95e
+Date: Thu, 15 Feb 2018 19:07:37 GMT
+Content-Length: 17
+Content-Type: text/plain; charset=utf-8
+
+I'm 3b018e0f4239
+
+~/dev/github/public/marcellodesales/whoami on  master ⌚ 11:07:16
+$ docker exec -ti 3b018e0f4239 cat /app/version
+de4f95e
 ```
 
 # Docker Engine
