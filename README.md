@@ -15,8 +15,12 @@ Get the port mapped on the host
 
 ```
 $ docker ps
-CONTAINER ID        IMAGE                                                          COMMAND                  CREATED                  STATUS              PORTS                     NAMES
-0f192f4af208        marcellodesales/whoami                                         "/app/http"              Less than a second ago   Up 6 seconds        0.0.0.0:32768->8000/tcp   whoami_whoami_1
+CONTAINER ID        IMAGE                                                         
+ COMMAND                  CREATED                  STATUS   
+ PORTS                     NAMES
+0f192f4af208        marcellodesales/whoami                                        
+              "/app/http"              Less than a second ago   Up 6 seconds       
+             0.0.0.0:32768->8000/tcp   whoami_whoami_1
 ```
 
 Now that you can see port `32768` was randomly assigned, you can call the service and see all the details:
