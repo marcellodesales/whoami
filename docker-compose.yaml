@@ -1,10 +1,13 @@
-version: "2.2"
+version: "3.3"
 
 services:
   whoami:
-    build: .
     image: marcellodesales/whoami
+    build:
+      context: .
+      args:
+        GIT_SHA: ${GIT_SHA:-master}
     ports:
-      - 8000/tcp
+      - 8000:8000/tcp
     environment:
       ENV: prod

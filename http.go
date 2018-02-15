@@ -5,7 +5,14 @@ import (
   "fmt"
   "net/http"
   "log"
+  "io/ioutil"
 )
+
+func check(e error) {
+    if e != nil {
+        panic(e)
+    }
+}
 
 func main() {
     port := os.Getenv("PORT")
@@ -13,9 +20,10 @@ func main() {
         port = "8080"
     }
 
-    version := os.Getenv("VERSION")
-    if version == "" {
-        version = "latest"
+    versionFile, err := ioutil.ReadFile("/app/version")
+    version := "latest"
+    if err == nil {
+      version = string(versionFile)
     }
   
     env := os.Getenv("ENV")
