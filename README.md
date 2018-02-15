@@ -11,37 +11,8 @@ Simple HTTP docker service that prints it's container ID. In addition, it can sh
 $ GIT_SHA=$(git rev-parse --short HEAD) docker-compose build && docker-compose up
 Building whoami
 Step 1/12 : FROM golang:alpine3.6 AS binary
- ---> a8f345e387a3
-Step 2/12 : ADD . /app
- ---> Using cache
- ---> d249d9b5d908
-Step 3/12 : WORKDIR /app
- ---> Using cache
- ---> 1fbd6030a0ac
-Step 4/12 : RUN go build -o http
- ---> Using cache
- ---> c9c7d8cb8c3a
-Step 5/12 : FROM alpine:3.6
- ---> 77144d8c6bdc
-Step 6/12 : WORKDIR /app
- ---> Using cache
- ---> cfb43d6b41f2
-Step 7/12 : ENV PORT 8000
- ---> Using cache
- ---> 8bc16fbf48d9
-Step 8/12 : EXPOSE 8000
- ---> Using cache
- ---> d5e4e0ea8cc3
-Step 9/12 : COPY --from=binary /app/http /app
- ---> Using cache
- ---> 45e975493933
-Step 10/12 : ARG GIT_SHA
- ---> Using cache
- ---> d92e51d8f14d
-Step 11/12 : RUN echo $GIT_SHA > /app/version
- ---> Running in 8b8c18834d28
-Removing intermediate container 8b8c18834d28
- ---> 2dc962d97072
+...
+...
 Step 12/12 : CMD ["/app/http"]
  ---> Running in fde1cfcb5cfc
 Removing intermediate container fde1cfcb5cfc
