@@ -3,9 +3,10 @@ whoami
 
 Simple HTTP docker service that prints it's container ID. In addition, it can show version and environments as response headers.
 
-# Docker Compose
+# Server - Build & Run
 
-* Build and Run: `GIT_SHA=$(git rev-parse --short HEAD) docker-compose build && docker-compose up`
+* Use docker-compose to build.
+  * Use `GIT_SHA=$(git rev-parse --short HEAD) docker-compose build && docker-compose up`
 
 ```
 $ GIT_SHA=$(git rev-parse --short HEAD) docker-compose build && docker-compose up
@@ -24,6 +25,8 @@ Recreating whoami_whoami_1 ... done
 Attaching to whoami_whoami_1
 whoami_1  | Listening on :8000
 ```
+
+# Client - View 
 
 * Just call the service on the published port; review and change it in `docker-compose`.
 
@@ -50,6 +53,7 @@ de4f95e
 
 # Docker Engine
 
+* Simpler example with defaults.
 
 ```
 $ docker run -d -p 8000:8000 --name whoami -t marcellodesales/whoami
