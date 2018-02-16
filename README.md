@@ -6,10 +6,10 @@ This is useful to verify kubernetes deployments with versions and rollouts.
 
 # Server - Build & Run
 
-* Execute [[build-and-deploy.sh]]
+* Execute [build-and-run.sh](build-and-run.sh)
 
 ```
-$ ./build-and-deploy.sh
+$ ./build-and-run.sh
 ...
 ...
 Step 14/14 : CMD ["/app/http"]
