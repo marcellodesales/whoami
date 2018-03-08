@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  whoami:
+    image: marcellodesales/whoami
+    build:
+      context: .
+      args:
+        VERSION: ${GIT_SHA:-master}
+        LABEL: ${GIT_LABEL:-master}
+    ports:
+      - 8000:8000/tcp
+    environment:
+      ENV: prod
+
+  ngrok:
+    image: wernight/ngrok
+    command: ngrok http whoami:8000
+    ports:
+      - 4000:4040
